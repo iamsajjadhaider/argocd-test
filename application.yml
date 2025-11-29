@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-test-app
+  namespace: argocd 
+spec:
+  # 1. Source (The Git Repository)
+  source:
+    repoURL: https://github.com/iamsajjadhaider/argocd-test.git
+    targetRevision: HEAD 
+    path: . 
+  
+  # 2. Destination (Where to deploy the Kubernetes resources)
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: nginx
+  
+  # 3. Synchronization Policy (How ArgoCD manages the deployment)
+  project: default
+  syncPolicy:
+    automated:
+      prune: true     # Allows ArgoCD to delete resources removed from Git
+      selfHeal: true  # <--- THIS IS 'AUTOHEAL'
+    syncOptions:
+    - CreateNamespace=true

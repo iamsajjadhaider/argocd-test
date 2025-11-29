@@ -1,0 +1,5 @@
+kind: Namespace #Kind means what type, creating name space here
+apiVersion: v1  #Using version 1
+metadata:	# Creating object
+  name: nginx	# Property name is equal to nginx
+
