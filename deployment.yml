@@ -6,7 +6,7 @@ metadata:
   labels:
     app: nginx
 spec:
-  replicas: 1 # Number of desired replicas for the application
+  replicas: 5 # Number of desired replicas for the application
   selector:
     matchLabels:
       app: nginx # Selector to identify pods managed by this Deployment
